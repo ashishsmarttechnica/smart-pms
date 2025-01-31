@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <!-- Enable screen capture permission -->
+    <key>com.apple.security.device.capture</key>
+    <true/>
+
+    <!-- Enable notifications permission -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <key>com.apple.security.notifications</key>
+    <true/>
+
+    <!-- Allow temporary read-write access to user logs -->
+    <key>com.apple.security.temporary-exception.files.home-relative-path.read-write</key>
+    <array>
+      <string>~/Library/Logs</string>
+    </array>
+
+    <!-- Allow network connections -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+
+    <!-- Enable access to microphone and camera -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Your app needs access to the microphone</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Your app needs access to the camera</string>
+
+    <!-- Enable system alert for notifications -->
+    <key>NSSystemAlertUsageDescription</key>
+    <string>To send notifications</string>
+
+    <!-- macOS-specific options for app re-activation -->
+    <key>LSBackgroundOnly</key>
+    <false/>
+    <key>LSUIElement</key>
+    <false/>
+
+    <!-- Request permission for notifications -->
+    <key>NSUserNotificationAlertStyle</key>
+    <string>banner</string>
+  </dict>
+</plist>

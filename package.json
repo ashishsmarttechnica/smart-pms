@@ -1,0 +1,90 @@
+{
+  "name": "SmartPms",
+  "version": "0.0.02",
+  "description": "An Electron application with React",
+  "main": "./out/main/index.js",
+  "author": "smarttechnica.com",
+  "homepage": "https://www.electronjs.org",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "install": "npm uninstall sharp && npm install --platform=darwin --arch=x64 sharp && npm rebuild --platform=darwin --arch=arm64 sharp",
+    "postinstall": "electron-builder install-app-deps",
+    "build:win": "npm run build && electron-builder --win --config",
+    "build:mac": "npm run build && electron-builder --mac --config",
+    "build:linux": "npm run build && electron-builder --linux --config"
+  },
+  "build": {
+    "appId": "com.smarttechnica.screen-capture-pro",
+    "productName": "SmartPms",
+    "files": [
+      "dist/",
+      "out/"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png"
+    }
+  },
+  "dependencies": {
+    "@electron-toolkit/preload": "^2.0.0",
+    "@electron-toolkit/utils": "^2.0.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "electron-fetch": "^1.9.1",
+    "electron-updater": "^6.3.9",
+    "express": "^4.21.1",
+    "framer-motion": "^11.9.0",
+    "ntp-client": "^0.5.3",
+    "ntp-time-sync": "^0.4.1",
+    "ntpclient": "^1.7.2",
+    "quill": "^2.0.2",
+    "react-icons": "^5.3.0",
+    "react-image-gallery": "^1.3.0",
+    "react-quill-new": "^3.3.3",
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.26.2",
+    "react-toastify": "^10.0.5",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^3.1.0",
+    "rsuite": "^5.71.0",
+    "sharp": "^0.33.5",
+    "smalltalk": "^4.1.2",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config": "^1.0.1",
+    "@electron-toolkit/eslint-config-prettier": "^1.0.1",
+    "@vitejs/plugin-react": "^4.0.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^33.2.1",
+    "electron-builder": "^24.6.3",
+    "electron-vite": "^1.0.27",
+    "eslint": "^8.47.0",
+    "eslint-plugin-react": "^7.33.2",
+    "postcss": "^8.4.47",
+    "prettier": "^3.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.13",
+    "vite": "^4.4.9"
+  }
+}

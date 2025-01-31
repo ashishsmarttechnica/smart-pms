@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  a {
+    @apply focus:no-underline hover:no-underline text-white focus:text-current;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .container-center {
+    @apply container mx-auto;
+  }
+
+  .topTabMenuHeader {
+    @apply bg-darkBlue border border-darkBlue text-white py-2 px-4 rounded-t-md flex justify-between items-center font-semibold text-base;
+  }
+
+  .topTabMenuBodyOverlay {
+    @apply border border-borderGray overflow-y-auto h-[345px];
+  }
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #f4f4f4;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-bg {
+  background-image: url(../assets/images/login/loginbg.png);
+}
+
+
+.ql-editor {
+  max-height: 120px;
+  min-height: 120px;
+}
+
+
+.shadoeOnErrorRed .rs-picker-toggle-active,
+.rs-picker.rs-picker-focused {
+  box-shadow: 0 0 0 3px #f443364f
+}
+
+.custom-html-content ul {
+  @apply list-disc list-inside pl-4;
+}
+
+.custom-html-content ol {
+  @apply list-decimal list-inside pl-4;
+}
+
+.custom-html-content li {
+  @apply mb-2;
+}
+
+.custom-html-content p {
+  @apply mb-4;
+}
