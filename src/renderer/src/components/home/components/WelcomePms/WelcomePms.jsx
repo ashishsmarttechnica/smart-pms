@@ -67,7 +67,7 @@ const WelcomePms = () => {
       <div className="flex items-center justify-between py-4 border-b border-borderGray">
         <div className="text-lg text-dark font-semibold">
           {/* Welcome to Smart PMS ✋ */}
-          {userDetail.first_name} {userDetail.last_name} {userDetail.surname}
+          {userDetail.first_name} {userDetail.last_name} {userDetail.surname}   new relese
         </div>
         <div className="flex items-center gap-3">
           {socketCount.pendingMeetingCount > 0 ? (

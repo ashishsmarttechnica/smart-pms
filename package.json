@@ -1,10 +1,10 @@
 {
   "name": "SmartPms",
-  "version": "0.0.02",
+  "version": "0.0.04",
   "description": "An Electron application with React",
   "main": "./out/main/index.js",
   "author": "smarttechnica.com",
-  "homepage": "https://www.electronjs.org",
+  "homepage": "https://github.com/ashishsmarttechnica/smart-pms",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -18,7 +18,7 @@
     "build:linux": "npm run build && electron-builder --linux --config"
   },
   "build": {
-    "appId": "com.smarttechnica.screen-capture-pro",
+    "appId": "pms.smarttechnica.com",
     "productName": "SmartPms",
     "files": [
       "dist/",
@@ -38,7 +38,14 @@
     "linux": {
       "target": "AppImage",
       "icon": "build/icon.png"
-    }
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ashishsmarttechnica",
+        "repo": "smart-pms"
+      }
+    ]
   },
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
@@ -46,6 +53,7 @@
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "electron-fetch": "^1.9.1",
+    "electron-log": "^5.3.0",
     "electron-updater": "^6.3.9",
     "express": "^4.21.1",
     "framer-motion": "^11.9.0",
