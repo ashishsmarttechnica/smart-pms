@@ -1,6 +1,6 @@
 {
   "name": "SmartPms",
-  "version": "0.0.04",
+  "version": "0.0.5",
   "description": "An Electron application with React",
   "main": "./out/main/index.js",
   "author": "smarttechnica.com",
@@ -43,7 +43,8 @@
       {
         "provider": "github",
         "owner": "ashishsmarttechnica",
-        "repo": "smart-pms"
+        "repo": "smart-pms",
+        "releaseType": "release"
       }
     ]
   },

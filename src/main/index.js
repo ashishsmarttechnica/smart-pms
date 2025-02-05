@@ -295,7 +295,7 @@ if (!gotTheLock) {
   app.whenReady().then(() => {
     createWindow();
     requestPermissions();
-    setupAutoUpdater();
+    setupAutoUpdater(mainWindow);
     server.listen(localSocketPort || 335, () => {
       console.log(
         `Socket.IO server is running on http://localhost:${

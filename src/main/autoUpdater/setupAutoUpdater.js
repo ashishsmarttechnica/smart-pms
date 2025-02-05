@@ -1,65 +1,57 @@
-// 🔹 Auto-Updater Function
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
+import { app, ipcMain } from "electron";
 
-
-function setupAutoUpdater() {
+function setupAutoUpdater(win) {
   log.transports.file.level = "info";
   autoUpdater.logger = log;
+  console.log("auto updater setup");
+
+  // Force update check in development mode
+  if (!app.isPackaged) {
+    autoUpdater.forceDevUpdateConfig = true;
+  }
 
   autoUpdater.on("checking-for-update", () => {
     log.info("Checking for update...");
+
+    win.webContents.send("update-checking");
   });
 
   autoUpdater.on("update-available", (info) => {
     log.info(`Update available: ${info.version}`);
-
-    // User ko confirm karne ke liye dialog
-    dialog
-      .showMessageBox({
-        type: "info",
-        title: "Update Available",
-        message: `New version ${info.version} is available. Do you want to update now?`,
-        buttons: ["Update", "Later"],
-      })
-      .then((result) => {
-        if (result.response === 0) {
-          autoUpdater.downloadUpdate();
-        }
-      });
+    win.webContents.send("update-available", info.version);
   });
 
   autoUpdater.on("update-not-available", () => {
     log.info("No new update available.");
+    win.webContents.send("update-not-available");
   });
 
   autoUpdater.on("download-progress", (progressObj) => {
-    log.info(`Download Speed: ${progressObj.bytesPerSecond}`);
     log.info(`Downloaded ${progressObj.percent}%`);
+    win.webContents.send("update-progress", progressObj.percent);
   });
 
   autoUpdater.on("update-downloaded", () => {
     log.info("Update downloaded. Installing...");
-
-    dialog
-      .showMessageBox({
-        type: "info",
-        title: "Update Ready",
-        message:
-          "Update downloaded. The app will now restart to apply the update.",
-        buttons: ["Restart Now"],
-      })
-      .then(() => {
-        autoUpdater.quitAndInstall();
-      });
+    win.webContents.send("update-downloaded");
   });
 
   autoUpdater.on("error", (err) => {
     log.error("Update error:", err);
+    win.webContents.send("update-error", err.message);
+  });
+
+  ipcMain.on("check-for-updates", () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
+
+  ipcMain.on("restart-app", () => {
+    autoUpdater.quitAndInstall();
   });
 
   autoUpdater.checkForUpdatesAndNotify();
 }
 
-
-export default setupAutoUpdater
+export default setupAutoUpdater;
